@@ -1,0 +1,5 @@
+docker/db/data
+docker/db/my.cnf
+.env
+.mypy_cache
+app/**/__pycache__
