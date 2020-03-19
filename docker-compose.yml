@@ -1,0 +1,35 @@
+version: '3'
+
+# 参考
+# web:https://datascientist-toolbox.com/django-docker-environment/
+# https://stackoverflow.com/questions/58642305/how-can-i-set-the-best-configurations-for-the-project-working-with-django-docke
+# DB:https://qiita.com/A-Kira/items/f401aea261693c395966
+services:
+  # MySQL
+  db:
+    image: mysql:5.7
+    container_name: emitas_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: emitas_db
+      MYSQL_USER: emitas
+      MYSQL_PASSWORD: emitas
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+    - ./docker/db/data:/var/lib/mysql
+    - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+    - ./docker/db/sql:/docker-entrypoint-initdb.d
+    ports:
+    - 3306:3306
+
+  # Django
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: pipenv run local
+    volumes:
+      - .:/emitas
+    ports:
+      - 8000:8000

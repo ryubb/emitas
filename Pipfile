@@ -3,12 +3,24 @@ name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
+[scripts]
+local = "python manage.py runserver 0.0.0.0:8000 --settings config.settings.local"
+showmigrations = "python manage.py showmigrations --settings config.settings.local"
+migration = "python manage.py makemigrations --settings config.settings.local"
+migrate = "python manage.py migrate --settings config.settings.local"
+test = "python manage.py test --settings config.settings.local"
+shell = "python manage.py shell --settings config.settings.local"
+loaddata = "python manage.py loaddata initial_data.json --settings config.settings.local"
+createsuperuser = "python manage.py createsuperuser --settings config.settings.local"
+lint = "flake8"
+
 [dev-packages]
 flake8 = "*"
 autopep8 = "*"
 
 [packages]
 django = "==3.0"
+mysqlclient = "*"
 
 [requires]
 python_version = "3.7"
