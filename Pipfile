@@ -21,6 +21,11 @@ autopep8 = "*"
 [packages]
 django = "==3.0"
 mysqlclient = "*"
+libsass = "*"
+django-compressor = "*"
+django-sass-processor = "*"
+django-crispy-forms = "*"
+django-widget-tweaks = "*"
 
 [requires]
 python_version = "3.7"
