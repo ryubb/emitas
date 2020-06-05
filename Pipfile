@@ -19,7 +19,7 @@ flake8 = "*"
 autopep8 = "*"
 
 [packages]
-django = "==3.0"
+django = "==3.0.7"
 mysqlclient = "*"
 libsass = "*"
 django-compressor = "*"
